@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neon Beats - Jogo de Ritmo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>NEON <span>BEATS</span></h1>
+      <p class="subtitle">Sincronize seus reflexos com a batida e domine o palco</p>
+    </header>
+
+    <main class="game-layout">
+      <!-- Painel Principal do Jogo -->
+      <section class="game-panel">
+        <!-- Barra Superior (HUD) -->
+        <div class="hud">
+          <div class="hud-item">PONTOS <strong id="score">0</strong></div>
+          <div class="hud-item">COMBO <strong id="combo">0x</strong></div>
+          <div class="hud-item">PRECISÃO <strong id="accuracy">100%</strong></div>
+        </div>
+
+        <!-- Barra de Energia / Vida -->
+        <div class="health-bar-wrapper">
+          <div class="health-bar" id="health-bar"></div>
+        </div>
+
+        <!-- Pista Musical -->
+        <div class="track-container" id="track">
+          <!-- Menu Inicial / Fim de Jogo -->
+          <div class="overlay" id="overlay">
+            <h2 id="overlay-title">Configurar Partida</h2>
+            <p id="overlay-desc" class="overlay-msg">
+              Use as teclas <b>D, F, J, K</b> ou toque nas colunas no ritmo da música.
+            </p>
+
+            <div class="form-group">
+              <label for="player-name">Seu Apelido</label>
+              <input type="text" id="player-name" placeholder="Ex: CyberPlayer" maxlength="15" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="song-select">Escolha a Música</label>
+                <select id="song-select">
+                  <option value="0">1. Cyber Synthwave (110 BPM)</option>
+                  <option value="1">2. Neon Drive (128 BPM)</option>
+                  <option value="2">3. Retro Arcade (140 BPM)</option>
+                  <option value="3">4. Hyper Bass (160 BPM)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="difficulty-select">Dificuldade</label>
+                <select id="difficulty-select">
+                  <option value="easy">Fácil</option>
+                  <option value="medium" selected>Médio</option>
+                  <option value="hard">Difícil</option>
+                </select>
+              </div>
+            </div>
+
+            <button id="start-btn">TOCAR AGORA</button>
+          </div>
+
+          <!-- 4 Colunas -->
+          <div class="lane" data-key="d"><div class="hit-zone">D</div></div>
+          <div class="lane" data-key="f"><div class="hit-zone">F</div></div>
+          <div class="lane" data-key="j"><div class="hit-zone">J</div></div>
+          <div class="lane" data-key="k"><div class="hit-zone">K</div></div>
+        </div>
+
+        <!-- Feedback Visual e Barra de Progresso da Música -->
+        <div class="bottom-bar">
+          <div id="feedback" class="feedback">AGUARDANDO...</div>
+          <div class="progress-wrapper">
+            <div class="progress-bar" id="song-progress"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Painel Lateral de Ranking -->
+      <aside class="ranking-panel">
+        <div class="ranking-header">
+          <h2>🏆 Top 10 Ranking</h2>
+          <select id="ranking-filter">
+            <option value="all">Todas as Músicas</option>
+            <option value="0">Cyber Synthwave</option>
+            <option value="1">Neon Drive</option>
+            <option value="2">Retro Arcade</option>
+            <option value="3">Hyper Bass</option>
+          </select>
+        </div>
+        <p class="db-status" id="db-status">Modo Local (Pronto p/ Firebase)</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Jogador</th>
+              <th>Música</th>
+              <th>Pts</th>
+            </tr>
+          </thead>
+          <tbody id="ranking-list">
+            <!-- Preenchido via JavaScript -->
+          </tbody>
+        </table>
+      </aside>
+    </main>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
